@@ -1,0 +1,25 @@
+{
+  "enabled": {
+    "description": "是否启用字数限制功能",
+    "type": "bool",
+    "default": true
+  },
+  "max_char_count": {
+    "description": "最大字符数，LLM 回复超过此字数将被缩短",
+    "type": "int",
+    "default": 40,
+    "hint": "当 LLM 回复的字符数超过该值时，将调用指定的 LLM 对回复进行缩短"
+  },
+  "provider_id": {
+    "description": "用于缩短回复的 LLM 提供商",
+    "type": "string",
+    "_special": "select_provider",
+    "hint": "选择用于缩短文本的 LLM 提供商。如果留空，将使用当前会话的默认提供商"
+  },
+  "summary_prompt": {
+    "description": "缩短回复时使用的系统提示词",
+    "type": "text",
+    "default": "你是一个文本精简助手。你的任务是将用户提供的文本缩短到{max_char_count}字以内，同时尽可能保留原文的核心信息和关键要点。\n\n要求：\n1. 保留原文最重要的信息和结论\n2. 删除冗余的修饰语和重复内容\n3. 保持语言流畅自然，不要出现断句或不完整的表达\n4. 严格控制输出字数不超过限制\n5. 不要添加任何原文中没有的内容\n6. 直接输出精简后的文本，不要添加任何额外说明\n7. 尽量保证语气不变\n\n注意: 你**绝对不能**在信息后额外添加任何内容，你只需要输出精简后的文本",
+    "hint": "自定义缩短文本时发送给 LLM 的系统提示词"
+  }
+}
